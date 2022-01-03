@@ -17,6 +17,6 @@ app.include_router(
     routers._in_routers.router,
     prefix="/api",
     tags=["API"],
-    responses={418: {"description": "I'm a teapot."}},
+    responses={418: {"description": "I'm a teapot oi."}},
 )
 
