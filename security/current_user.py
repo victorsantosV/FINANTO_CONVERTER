@@ -8,7 +8,7 @@ from .authenticate_user import get_user
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
-    credentials_exception = HTTPException(401,detail="Login inválido.",headers={"WWW-Authenticate": "Bearer"})
+    credentials_exception = HTTPException(401,detail="O login expirou.",headers={"WWW-Authenticate": "Bearer"})
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")

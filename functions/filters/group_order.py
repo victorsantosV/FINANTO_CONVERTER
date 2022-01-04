@@ -1,14 +1,18 @@
 import pandas as pd
 from fastapi import HTTPException
+from definitions.in_definitions import invalid_list
 
 def od_by(df_temp,name,srt): 
-    if srt in ['asc','ASC','crescente','Crescente','CRESCENTE']:
-        df_temp = df_temp.sort_values(by = name,ascending = True)
-    elif srt in ['desc','DESC','decrescente','Decrescente','DECRESCENTE']:
-        df_temp = df_temp.sort_values(by = name,ascending = False)
-    else:
-        raise HTTPException(406,detail=f"Erro ao ordenar '{name}' de maneira {srt}")
 
+    if name not in invalid_list:
+        try:
+            if srt in ['asc','ASC','crescente','Crescente','CRESCENTE']:
+                df_temp = df_temp.sort_values(by = name,ascending = True)
+            elif srt in ['desc','DESC','decrescente','Decrescente','DECRESCENTE']:
+                df_temp = df_temp.sort_values(by = name,ascending = False)
+        except BaseException as e:
+            print(e)
+            raise HTTPException(406,detail=f"Erro ao ordenar {name} de maneira {srt}")
     return df_temp
 
 def gby(gcolumns,gb,df_temp):   

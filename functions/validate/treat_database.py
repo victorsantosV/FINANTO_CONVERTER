@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 from imports.imports import invalid_list,split_from_list
 from fastapi import HTTPException
@@ -18,7 +19,7 @@ def delete_col(delete_c,df_temp):
     if delete_c not in invalid_list:
         try:    
             for dc in delete_c:
-                dc = dc.split(split_from_list)
+                dc = re.split(split_from_list,dc)
             for i in dc:
                 df_temp = df_temp.drop(columns=[i])
         except BaseException as e:

@@ -3,7 +3,7 @@ from fastapi import HTTPException
 from .group_order import *
 from .filt_operators import *
 from definitions.in_definitions import invalid_list,split_from_list
-
+import re
 
 def apply_filter(df_temp,filters):
     for f in filters:
@@ -44,8 +44,8 @@ def filt_options(exp,df_temp):
             for op_a in op_and:
                 op_ou = None
                 name = op_a.name[0]
-                op = op_a.op[0]     
-                val = op_a.val[0]   
+                op = op_a.op[0]
+                val = op_a.val[0]    
                 df_temp = op_check(i,op_ou,op_a,df_t,op,df_temp,name,val)    
                 
                 if len(df_temp) == 0:
@@ -63,11 +63,12 @@ def filt_options(exp,df_temp):
             df_temp = df_t
             for op_o in op_or:       
                 op_e = None
-                name = op_o.name[0]  
-                op = op_o.op[0]      
-                val = op_o.val[0]    
+                name = op_o.name[0]
+                op = op_o.op[0] 
+                val = op_o.val[0]
+                print(name,op,val)   
                 df_temp = op_check(i,op_o,op_e,df_t,op,df_temp,name,val)
-                
+                print(df_temp)
                 if len(df_temp) == 0:
                     raise HTTPException(406,f"O filtro '{name} {op} {val}' retornou um resultado vazio.")
 
@@ -90,7 +91,7 @@ def filt_options(exp,df_temp):
         try:
             if slct not in invalid_list:
                 for sl in slct:
-                    sl = sl.split(split_from_list)
+                    sl = re.split(split_from_list,sl)
                     df_temp = df_temp.loc[:,sl]
         except BaseException as e:
             print(e)

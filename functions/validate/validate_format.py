@@ -20,7 +20,7 @@ def format_check(df_temp,name,zfill,regex,regex_index,cut,case_txt,valuecut):
             df_temp[name] = df_temp[name].str.extract(regex)[regex_index]
         except BaseException as e:
             print(e)
-            raise HTTPException(406, detail=f"Erro ao aplicar regex '{regex}', capturando indice '{regex_index}'.")
+            raise HTTPException(406, detail=f"Erro ao aplicar regex '{regex}' em '{name}', capturando indice '{regex_index}'.")
 
     if zfill not in invalid_list:   
         try:
