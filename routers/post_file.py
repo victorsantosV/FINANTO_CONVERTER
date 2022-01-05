@@ -1,9 +1,10 @@
 from imports.imports import *
+from .auth import login_token
 
 @router.post(post_md)
 async def post_file(
-    current_user: User = Depends(get_current_active_user),
     file: UploadFile = File(default_value),
+    token: str = Header(...),
     link: str = Body(default_value),
     nome_do_arquivo: str = Body(default_name_file),
     modo_salvamento: Salvamento = Body(Salvamento.varios_arquivos),
@@ -38,6 +39,12 @@ async def post_file(
     valor_a_cortar: List[str] = Body(default_value),
     regex: List[str] = Body(default_value),
     regex_index: List[str] = Body(default_value)):
+
+    for tk in login_token:
+        if token == tk:
+            token = token
+        else:
+            raise HTTPException(401,detail="Inautorizado.")
 
     clear_all(base_dados,guarda_arquivo,slct,filter_and,filter_or,gcol,gb,grp,order,exp,modelo)
     cria_pasta(pasta_arquivos)

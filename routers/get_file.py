@@ -1,7 +1,7 @@
 from imports.imports import *
 
 @router.get(get_all)
-def get_file(current_user: User = Depends(get_current_active_user)):
+def get_file():
     try:
         if guarda_arquivo not in invalid_list:
             for file in guarda_arquivo:

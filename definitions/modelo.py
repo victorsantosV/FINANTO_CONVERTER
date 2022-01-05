@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 from typing import List, Optional, Union
 
+class Login(str):
+    username: str
+    password: str
+
 class Group_col(BaseModel):
     name: str
     how_gp: str

@@ -22,6 +22,7 @@ invalid_list = [None,'',[],False,[''],0,[{'':''}],'Nada','nada','NADA']
 invalid_list_int = [None,'',[],False,[''],[{'':''}],'Nada','nada','NADA']
 router = APIRouter()
 
+
 colmns = []
 extct = []
 slct = []
