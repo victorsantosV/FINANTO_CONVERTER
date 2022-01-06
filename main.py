@@ -2,7 +2,6 @@ from routers._in_routers import *
 import routers._in_routers
 
 app = FastAPI()
-
 origins = ["*"]
 
 app.add_middleware(
