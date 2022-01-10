@@ -1,4 +1,4 @@
-from imports.imports import *
+from .imports import *
 
 @router.get(get_all)
 def get_file():

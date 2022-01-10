@@ -1,6 +1,6 @@
-from functions.treatfile.compact_and_create import cria_pasta, zip_and_remove
+from functions.treatfile.create import cria_pasta, zip_and_remove
 from definitions.in_definitions import Post_fs,Salvamento
-from .divide_linhas import *
+from .div_rows import *
 from fastapi import HTTPException
 import pandas as pd  
 

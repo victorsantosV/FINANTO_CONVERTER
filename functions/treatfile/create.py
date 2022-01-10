@@ -8,7 +8,7 @@ def clear_all(base_dados,guarda_arquivo,slct,filter_and,filter_or,gcol,gb,grp,or
     slct.clear()
     filter_and.clear()
     filter_or.clear()
-    gcol.clear()
+    gcol.clear() 
     gb.clear()
     grp.clear()
     order.clear()

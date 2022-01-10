@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-from imports.imports import invalid_list,split_from_list
+from routers.imports import invalid_list,split_from_list
 from fastapi import HTTPException
 
 def bd_treat(arquivo,unnamed,deleta_coluna):
