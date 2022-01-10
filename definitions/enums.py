@@ -1,5 +1,5 @@
 from enum import Enum
-
+  
 class Salvamento(str,Enum):
     varios_arquivos = "Em vários arquivos."
     uma_pagina = "Em uma página em um só arquivo."
