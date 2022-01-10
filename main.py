@@ -14,8 +14,8 @@ app.add_middleware(
 
 app.include_router(
     routers._in_routers.router,
-    prefix="/api",
+    prefix="/api",                
     tags=["API"],
-    responses={418: {"description": "Inválido"}},
+    responses={418: {"description": "I'm teapot"}},
 )
 
