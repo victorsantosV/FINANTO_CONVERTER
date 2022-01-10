@@ -21,7 +21,7 @@ class Join_exp(str, Enum):
     inner = "inner"
     outer = "outer"
     left = "left"
-    right = "right"
+    right = "right"         
 
 class How_join(str, Enum):
     e = "and"
